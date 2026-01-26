@@ -1,0 +1,6 @@
+#  Ignore build output and external binaries
+build
+externalBins
+installer/Output
+src/legacy
+.vscode
