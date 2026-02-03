@@ -37,7 +37,7 @@ Uninstallable=yes
 ;Name: "advanced"; Description: "Custom installation (choose template to copy from)";
 
 [Dirs]
-Name: "{app}\template";
+Name: "{app}\template"; Permissions: users-modify
 Name: "{app}\icons";
 
 [Files]

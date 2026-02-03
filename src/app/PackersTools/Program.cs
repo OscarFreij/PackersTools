@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PackersTools
 {
@@ -198,14 +199,15 @@ namespace PackersTools
 
             var placeholders = new Dictionary<string, string>
             {
-                ["APPLICATION_NAME"] = appName,
-                ["APPLICATION_VERSION"] = appVersion ?? string.Empty,
-                ["APPLICATION_MAKER"] = appVendor ?? string.Empty,
-                ["APPLICATION_SCRIPT_DATE"] = DateTime.Now.ToString("dd-MM-yyyy"),
-                ["APPLICATION_SCRIPT_AUTHOR"] = Environment.UserName
+                ["AppName"] = appName,
+                ["AppVersion"] = appVersion ?? string.Empty,
+                ["AppVendor"] = appVendor ?? string.Empty,
+                ["AppScriptDate"] = DateTime.Now.ToString("yyyy/MM/dd"),
+                ["AppScriptAuthor"] = Environment.UserName
             };
 
             CopyDirectory(templateDirectory, totalPath);
+            
             ReplacePlaceholdersInFile(Path.Combine(totalPath, "Invoke-AppDeployToolkit.ps1"), placeholders);
 
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -215,7 +217,6 @@ namespace PackersTools
                 UseShellExecute = true,
             };
             Process.Start(startInfo);
-
         }
 
         static void ReplacePlaceholdersInFile(
@@ -225,15 +226,22 @@ namespace PackersTools
             if (!File.Exists(filePath))
                 throw new FileNotFoundException("Template file not found", filePath);
 
-            string content = File.ReadAllText(filePath, Encoding.UTF8);
-
-            foreach (var kvp in placeholders)
+            Console.WriteLine($"{filePath}");
+            if (filePath.Contains("Invoke-AppDeployToolkit"))
             {
-                string placeholder = $"#{kvp.Key}#";
-                content = content.Replace(placeholder, kvp.Value ?? string.Empty);
-            }
+                string content = File.ReadAllText(filePath, Encoding.UTF8);
 
-            File.WriteAllText(filePath, content, Encoding.UTF8);
+                foreach (var kvp in placeholders)
+                {
+                    string pattern = $@"^\s*({kvp.Key})\s*=\s*(['""])[^'""]*\2";
+                    var regex = new Regex(pattern, RegexOptions.Multiline);
+
+                    content = regex.Replace(content, $"{kvp.Key} = '{kvp.Value}'");
+                }
+
+                File.WriteAllText(filePath, content, Encoding.UTF8);
+
+            }
         }
 
         static void CopyDirectory(string sourceDir, string destDir)

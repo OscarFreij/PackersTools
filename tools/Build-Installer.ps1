@@ -17,7 +17,7 @@ Remove-Item "installer/Output" -Recurse -Force -ErrorAction SilentlyContinue
 New-Item "externalBins" -ItemType Directory -Force | Out-Null
 
 # build application (.net 8.0)
-dotnet publish src/app/PackersTools -c Release -o build/app -r win-x64 --self-contained true -p:Version="0.0.0" -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+dotnet publish src/app/PackersTools -c Release -o build/app -r win-x64 --self-contained true -p:Version="0.3.0" -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
 
 # fetch IntuneWinAppUtil.exe
 $url = "https://github.com/microsoft/Microsoft-Win32-Content-Prep-Tool/raw/master/IntuneWinAppUtil.exe"
