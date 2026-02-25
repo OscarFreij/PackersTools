@@ -1,21 +1,35 @@
-MIT License
+PackersTools Source Available License (PSAL) v1.0
 
 Copyright (c) 2026 Oscar Freij
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to do so, subject to the
-following conditions:
+Permission is granted to use, copy, and modify this software for personal, educational, and internal business use.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You may redistribute the original, unmodified software provided that:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+* This license is included
+* Attribution is given to Oscar Freij
+* A link to the original project is provided:
+  https://github.com/OscarFreij/PackersTools
+
+You may NOT:
+
+* Sell this software
+* Sell modified versions
+* Redistribute commercially
+* Include in commercial products without permission
+
+Commercial use requiring redistribution requires separate permission.
+
+Third-Party Software
+
+This software includes Microsoft Win32 Content Prep Tool (intunewinapputil.exe)
+
+Copyright Microsoft Corporation
+
+Licensed under Microsoft's terms.
+
+Disclaimer
+
+This software is provided "AS IS", without warranty of any kind.
+
+All rights reserved.
