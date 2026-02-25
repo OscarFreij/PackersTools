@@ -30,6 +30,7 @@ OutputBaseFilename=PackersTools-{#AppVersion}-Setup
 Compression=lzma
 SolidCompression=yes
 LicenseFile=license.txt
+InfoAfterFile=THIRD_PARTY_NOTICES.txt
 Uninstallable=yes
 
 ;[Types]
@@ -44,6 +45,7 @@ Name: "{app}\icons";
 Source: "{#AppSourceDir}\PackersTools.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#AppSourceDir}\PackersTools.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "license.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "THIRD_PARTY_NOTICES.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#ExternalBinDir}\IntuneWinAppUtil.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#IconSourceDir}\*"; DestDir: "{app}\icons"; Flags: ignoreversion
 

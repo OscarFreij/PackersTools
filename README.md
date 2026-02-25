@@ -18,3 +18,12 @@ installer.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 This installer is currently unsigned.
 Windows may show a SmartScreen warning.
 The source code is fully available in this repository.
+
+## License
+
+This project is licensed under the MIT License.
+
+See LICENSE for details.
+
+This project includes Microsoft intunewinapputil.exe which is licensed separately.
+See THIRD_PARTY_NOTICES.md for details.

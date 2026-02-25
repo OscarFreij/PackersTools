@@ -1,1 +1,44 @@
-TEST LICENSE DATA
+PackersTools License Agreement
+
+Copyright (c) 2026 Oscar Freij
+
+This installer will install PackersTools.
+
+PackersTools is licensed under the MIT License.
+
+---
+
+MIT License Summary:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software to use, copy, modify, and distribute it.
+
+This software is provided "AS IS", without warranty of any kind.
+
+Full license text is available in the LICENSE file.
+
+---
+
+Third-Party Components
+
+This installer includes the following third-party component:
+
+Microsoft Win32 Content Prep Tool
+(intunewinapputil.exe)
+
+Copyright (c) Microsoft Corporation
+
+This component is licensed separately by Microsoft and is not covered under
+the PackersTools license.
+
+Official source:
+https://github.com/microsoft/Microsoft-Win32-Content-Prep-Tool
+
+By using this installer, you agree to comply with the applicable licenses
+for both PackersTools and included third-party components.
+
+---
+
+Disclaimer
+
+This project is not affiliated with or endorsed by Microsoft Corporation.
