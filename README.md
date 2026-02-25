@@ -1,6 +1,8 @@
 # PackersTools
 
 ## What it does
+- Adds "Right Click Tools" for application packers
+- Designed for PSADT v3 and v4 but supports others
 
 ## Installation
 - Download installer from Releases
