@@ -2,7 +2,8 @@ name: Build & Attach to Draft Release
 
 on:
   release:
-    types: [created]   # Runs when draft release is created
+    types: [published]   # Runs when draft release is created
+  workflow_dispatch:     # Allows manual trigger from Actions tab
 
 permissions:
   contents: write
