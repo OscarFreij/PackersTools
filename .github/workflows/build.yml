@@ -1,10 +1,8 @@
-name: Build & Draft Release
+name: Build & Attach to Draft Release
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
-      - "v*.*.*-*"
+  release:
+    types: [created]   # Runs when draft release is created
 
 permissions:
   contents: write
@@ -24,7 +22,7 @@ jobs:
       id: tag
       shell: pwsh
       run: |
-        $tag = "${{ github.ref_name }}"
+        $tag = "${{ github.event.release.tag_name }}"
         $version = $tag.TrimStart("v")
 
         if ($version -match "-(alpha|beta)$") {
@@ -42,7 +40,6 @@ jobs:
       shell: pwsh
       run: |
         New-Item -ItemType Directory -Force build/app | Out-Null
-        New-Item -ItemType Directory -Force build/installer | Out-Null
         New-Item -ItemType Directory -Force externalBins | Out-Null
 
     # -------------------------------
@@ -74,7 +71,7 @@ jobs:
           -r win-x64 `
           --self-contained true `
           -o build/app `
-          -p:Version=${{ steps.tag.outputs.version }}
+          -p:Version=${{ steps.tag.outputs.version }} `
           -p:PublishSingleFile=true `
           -p:IncludeNativeLibrariesForSelfExtract=true
 
@@ -94,8 +91,7 @@ jobs:
     # -------------------------------
     - name: Install Inno Setup
       shell: pwsh
-      run: |
-        choco install innosetup -y
+      run: choco install innosetup -y
 
     # -------------------------------
     # Build installer
@@ -105,7 +101,7 @@ jobs:
       run: |
         & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\PackersTools.iss
 
-            # -------------------------------
+    # -------------------------------
     # Generate SHA256 checksum
     # -------------------------------
     - name: Generate SHA256 checksum
@@ -118,22 +114,16 @@ jobs:
         }
 
         $hash = Get-FileHash $installer.FullName -Algorithm SHA256
-
-        $output = "$($hash.Hash)  $($installer.Name)"
-        $output | Set-Content "$($installer.FullName).sha256" -Encoding ASCII
-
-        Write-Host "SHA256 generated:"
-        Write-Host $output
+        "$($hash.Hash)  $($installer.Name)" |
+          Set-Content "$($installer.FullName).sha256" -Encoding ASCII
 
     # -------------------------------
-    # Draft GitHub Release
+    # Upload files to existing draft release
     # -------------------------------
-    - name: Create draft release
+    - name: Upload assets to draft release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ github.ref_name }}
-        name: PackersTools ${{ steps.tag.outputs.version }}
-        draft: true
-        prerelease: ${{ steps.tag.outputs.prerelease }}
+        tag_name: ${{ github.event.release.tag_name }}
         files: |
-          build/installer/*
+          installer/Output/*.exe
+          installer/Output/*.sha256
