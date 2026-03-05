@@ -8,7 +8,7 @@ Suggested amount: €25 per organization
 
 Donate via PayPal:
 
-https://paypal.me/Oggals
+https://paypal.me/oscarfreij
 
 Your PayPal receipt serves as proof of support.
 

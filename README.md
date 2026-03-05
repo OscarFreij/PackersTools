@@ -1,7 +1,7 @@
 # PackersTools
 
 ![License](https://img.shields.io/badge/license-PSAL-blue.svg)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/Oggals)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/oscarfreij)
 
 PackersTools is a simple, fast, and reliable tool for creating Microsoft Intune Win32 packages using the official Microsoft Win32 Content Prep Tool.
 
@@ -94,7 +94,7 @@ If you use PackersTools professionally, please consider supporting development:
 
 Donate via PayPal:
 
-https://paypal.me/Oggals
+https://paypal.me/oscarfreij
 
 Suggested commercial support amount: €25
 
